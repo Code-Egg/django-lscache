@@ -14,7 +14,6 @@ def lscache(max_age=None, cacheability=None, esi=None):
         def wrapper(request, *args, **kwargs):
             response = view_func(request, *args, **kwargs)
 
-            # Skip cache for certain cookies
             if any(cookie in request.COOKIES for cookie in getattr(settings, "LSCACHE_SKIP_COOKIES", [])):
                 response["X-LiteSpeed-Cache-Control"] = "no-cache"
             else:
