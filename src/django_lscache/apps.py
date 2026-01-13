@@ -5,6 +5,6 @@ class DjangoLSCacheConfig(AppConfig):
     name = "django_lscache"
     verbose_name = "LiteSpeed Cache"
 
-def ready(self):
-    from .conf import ensure_middleware
-    ensure_middleware()
+    def ready(self):
+        from .conf import ensure_middleware
+        ensure_middleware()
