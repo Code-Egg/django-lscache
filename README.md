@@ -11,14 +11,14 @@ Add `django_lscache` to your `INSTALLED_APPS` in settings.py:
 ```
 INSTALLED_APPS = [
     ...
-    "django_lscache",
+    'django_lscache',
 ]
 ```
 Add the middleware:
 ```
 MIDDLEWARE = [
     ...
-    "django_lscache.middleware.LSCacheMiddleware",
+    'django_lscache.middleware.LSCacheMiddleware',
 ]
 ```
 
