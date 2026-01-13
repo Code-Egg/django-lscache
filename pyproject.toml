@@ -9,7 +9,7 @@ description = "LiteSpeed Cache integration for Django"
 readme = "README.md"
 license = {text = "MIT"}
 authors = [
-  {name = "Egg", email = "localhost@gmail.com"}
+  {name = "Cold Egg"}
 ]
 requires-python = ">=3.8"
 
@@ -25,9 +25,9 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/yourname/django-lscache"
-Documentation = "https://github.com/yourname/django-lscache"
-Issues = "https://github.com/yourname/django-lscache/issues"
+Homepage = "https://github.com/Code-Egg/django-lscache"
+Documentation = "https://github.com/Code-Egg/django-lscache"
+Issues = "https://github.com/Code-Egg/django-lscache/issues"
 
 [tool.setuptools]
 package-dir = {"" = "src"}
