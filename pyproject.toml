@@ -8,10 +8,9 @@ version = "0.1.0"
 description = "LiteSpeed Cache integration for Django"
 readme = "README.md"
 requires-python = ">=3.8"
-
-# Use the new PEP 639 license field
-license = { text = "MIT" }
-license-files = ["LICENSE"] 
+license = "MIT AND (Apache-2.0 OR BSD-2-Clause)"
+license-files = ["LICEN[CS]E*", "vendored/licenses/*.txt", "AUTHORS.md"]
+keywords = ["lscache","cache","django"]
 
 authors = [
   { name = "Cold Egg" }
