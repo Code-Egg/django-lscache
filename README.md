@@ -44,6 +44,7 @@ def contact(request):
 ### Purge ALL command
 Purge all cached URLs, run the management command:
 ```
-python manage.py lscache_purge_all --all
+python manage.py lscache_purge --all
 ```
-Note: The domain used for purging is set in django_lscache/management/commands/lscache_purge_all.py
+
+Note: The domain used for purging is set in django_lscache/management/commands/lscache_purge.py
