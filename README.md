@@ -32,15 +32,23 @@ Use the `@lscache` decorator in your views to cache responses:
 from django_lscache.decorators import lscache
 from django.http import HttpResponse
 
+### No cache header
 @lscache()
 def index(request):
     return HttpResponse("Hello, world!")
 
-@lscache(max_age=30)
+### Returns no-cache
+@lscache(max_age=0)
+def index(request):
+    return HttpResponse("Hello, world!")
+
+### Public cache for 3600 seconds
+@lscache(max_age=3600)
 def index(request):
     return HttpResponse("Hello, world!")   
 
-@lscache(max_age=10, cacheability="private")
+### Private cache for 180 seconds
+@lscache(max_age=180, cacheability="private")
 def contact(request):
     return HttpResponse("Contact page")
 ```
