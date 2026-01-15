@@ -1,12 +1,10 @@
-import requests
-
-def purge_all(urls, server_host):
-    if not isinstance(urls, (list, tuple)):
-        urls = [urls]
-    purge_value = ','.join(urls)
-    response = requests.request(
-        "PURGE",
-        server_host,
-        headers={"X-LiteSpeed-Purge": purge_value}
-    )
-    return response.status_code
+def lscache_purge(tags=None, uris=None, stale=False):
+    parts = []
+    parts.append("stale=on" if stale else "stale=off")
+    
+    if tags:
+        parts.extend([f"tag={tag}" for tag in tags])
+    if uris:
+        parts.extend(uris)
+    
+    return ",".join(parts)

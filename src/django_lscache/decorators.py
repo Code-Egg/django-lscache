@@ -1,6 +1,7 @@
 from functools import wraps
+from django.conf import settings
 
-def lscache(max_age=None, cacheability="public", esi=False):
+def lscache(max_age=None, cacheability=None, esi=False, tags=None):
     def decorator(view_func):
         @wraps(view_func)
         def wrapper(request, *args, **kwargs):
@@ -10,14 +11,29 @@ def lscache(max_age=None, cacheability="public", esi=False):
                 response["X-LiteSpeed-Cache-Control"] = "no-cache"
                 return response
 
-            if max_age is None:
-                return response
+            _max_age = (
+                max_age
+                if max_age is not None
+                else getattr(settings, "LSCACHE_DEFAULT_MAX_AGE", None)
+            )
+            _cacheability = (
+                cacheability
+                if cacheability is not None
+                else getattr(settings, "LSCACHE_DEFAULT_CACHEABILITY", None)
+            )
 
-            header = f"max-age={int(max_age)},{cacheability}"
-            if esi:
-                header += ",esi=on"
+            if _max_age is not None and _cacheability:
+                header = f"max-age={_max_age},{_cacheability}"
+                if esi:
+                    header += ",esi=on"
+                response["X-LiteSpeed-Cache-Control"] = header
 
-            response["X-LiteSpeed-Cache-Control"] = header
+            if tags:
+                if isinstance(tags, (list, tuple)):
+                    response["X-LiteSpeed-Tag"] = ",".join(tags)
+                else:
+                    response["X-LiteSpeed-Tag"] = str(tags)
+
             return response
 
         return wrapper
