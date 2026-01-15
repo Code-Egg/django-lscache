@@ -93,7 +93,7 @@ Cache purging is done by sending an X-LiteSpeed-Purge response header.
 
 Add the helper and the following examples in your app views:
 ```
-from django_lscache import lscache, lscache_purge
+from django_lscache import lscache_purge
 from django.http import HttpResponse
 ```
 
@@ -177,3 +177,9 @@ response["X-LiteSpeed-Purge"] = lscache_purge(
 )
 ```
 This forces all visitors to wait for fresh content after a purge.
+
+### Restart Python Process
+LiteSpeed/OpenLiteSpeed comes with python in detached mode by default, so you will need to restart python with following command to make any new settings take effect:
+```
+killall lswsgi
+```
