@@ -24,7 +24,7 @@ jobs:
           sudo bash djangosetup.sh
           curl -sk -o per-instance.sh https://raw.githubusercontent.com/litespeedtech/ls-cloud-image/master/Cloud-init/per-instance.sh
           sudo bash per-instance.sh
-          source /usr/local/lsws/Example/html/bin/activate
+          sudo source /usr/local/lsws/Example/html/bin/activate
           cd /usr/local/lsws/Example/html/demo
           sudo git clone https://github.com/litespeedtech/lscache-django.git
           sudo pip install -e lscache-django
