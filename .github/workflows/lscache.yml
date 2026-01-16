@@ -26,12 +26,12 @@ jobs:
           sudo bash per-instance.sh
           source /usr/local/lsws/Example/html/bin/activate
           cd /usr/local/lsws/Example/html/demo
-          git clone https://github.com/litespeedtech/lscache-django.git
-          pip install -e lscache-django
+          sudo git clone https://github.com/litespeedtech/lscache-django.git
+          sudo pip install -e lscache-django
           SETTINGS="demo/settings.py"
-          grep -q "lscache_django" $SETTINGS || sed -i "/INSTALLED_APPS = \[/a\    'lscache_django'," $SETTINGS
-          grep -q "lscache_django.middleware.LSCacheMiddleware" $SETTINGS || sed -i "/MIDDLEWARE = \[/a\    'lscache_django.middleware.LSCacheMiddleware'," $SETTINGS
-          mkdir -p app/tests
-          touch app/tests/__init__.py
-          curl -o app/tests/test_lscache.py https://raw.githubusercontent.com/litespeedtech/lscache-django/main/tests/test_lscache.py
-          python manage.py test app
+          sudo grep -q "lscache_django" $SETTINGS || sed -i "/INSTALLED_APPS = \[/a\    'lscache_django'," $SETTINGS
+          sudo grep -q "lscache_django.middleware.LSCacheMiddleware" $SETTINGS || sed -i "/MIDDLEWARE = \[/a\    'lscache_django.middleware.LSCacheMiddleware'," $SETTINGS
+          sudo mkdir -p app/tests
+          sudo touch app/tests/__init__.py
+          sudo curl -o app/tests/test_lscache.py https://raw.githubusercontent.com/litespeedtech/lscache-django/main/tests/test_lscache.py
+          sudo python manage.py test app
